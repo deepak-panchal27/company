@@ -72,12 +72,17 @@ CREATE TABLE `employee_master` (
 --
 
 CREATE TABLE `phone_master` (
-  `Phone_ID` int(11) NOT NULL,
-  `Address_ID` int(11) NOT NULL,
-  `Phone_No` int(10) NOT NULL,
-  `Created_Date` timestamp NOT NULL DEFAULT current_timestamp(),
-  `Updated_Date` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+ `Phone_ID` int(11) NOT NULL AUTO_INCREMENT,
+ `Address_ID` int(11) NOT NULL,
+ `Phone_No` int(10) NOT NULL,
+ `Phone_No2` int(10) NOT NULL,
+ `Phone_No3` int(10) NOT NULL,
+ `Created_Date` timestamp NOT NULL DEFAULT current_timestamp(),
+ `Updated_Date` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+ PRIMARY KEY (`Phone_ID`),
+ KEY `Address_ID` (`Address_ID`),
+ CONSTRAINT `phone_master_ibfk_1` FOREIGN KEY (`Address_ID`) REFERENCES `address_master` (`Address_ID`)
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8
 
 --
 -- Indexes for dumped tables
