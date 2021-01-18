@@ -47,10 +47,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
 
         $row = mysqli_fetch_assoc($result);
         $d_id = $row["Department_ID"];
-    }
-
-    if (mysqli_query($conn, $select_query))
-    {
         $update_query = "UPDATE `department` SET `Department_Name`='$newname' WHERE `Department_ID`='$d_id'";
         $result = mysqli_query($conn, $update_query);
         echo "Record updated successfully";
