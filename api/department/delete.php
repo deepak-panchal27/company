@@ -31,11 +31,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
         $name = test_input($_POST["name"]);
     }
 
-    $sql = "INSERT INTO `department`(`Department_Name`) VALUES ('$name')";
+    $sql = "DELETE FROM `department` WHERE `Department_Name`='$name'";
 
     if (mysqli_query($conn, $sql))
     {
-        echo "New record created successfully";
+        echo "Record deleted successfully";
     }
     else
     {

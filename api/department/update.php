@@ -49,15 +49,17 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
         $d_id = $row["Department_ID"];
     }
 
-    $result = mysqli_query($conn, $select_query);
-
-    if (mysqli_num_rows($result) > 0)
+    if (mysqli_query($conn, $select_query))
     {
         $update_query = "UPDATE `department` SET `Department_Name`='$newname' WHERE `Department_ID`='$d_id'";
         $result = mysqli_query($conn, $update_query);
         echo "Record updated successfully";
     }
-    $conn->close();
+    else
+    {
+        echo "Error: " . $update_query . "<br>" . mysqli_error($conn);
+    }
 
+    mysqli_close($conn);
 }
 ?>
